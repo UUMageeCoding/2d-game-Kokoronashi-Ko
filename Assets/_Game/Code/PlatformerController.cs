@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,54 +7,25 @@ public class PlatformerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 12f;
-    
+
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private Animator anim; 
+    [SerializeField] private Animator anim;
 
     private Rigidbody2D rb;
     public bool isGrounded;
 
-    private bool _IsMoving = false;
-    public bool IsMoving
-    {
-        get
-        {
-            return _IsMoving;
-        }
 
-        private set
-        {
-            _IsMoving = value;
-            animator.SetBool("IsMoving", value);
-        }
-    }
-
-    private bool _IsJogging = false;
-
-    public bool IsJogging;  
-    {get
-        {
-            return _IsJogging;
-        }
-        set
-        {
-            _IsJogging = value;
-            animator.SetBool("IsJogging", value);
-        }
-    }
-
-    
     Animator animator;
     private float moveInput;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
         // Set to Dynamic with gravity
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 3f;
@@ -68,21 +40,9 @@ public class PlatformerController : MonoBehaviour
 
         if (moveInput == 0 && isGrounded == true)
         {
-            anim.SetBool("Idle", true);
+            anim.SetBool("IsMoving", false);
         }
-
-    /*
-        if (moveInput >= -1)
-        {
-            anim.SetBool("WalkLeft", true);
-        }
-    */
-    /*
-        if (moveInput <= 1)
-        {
-            anim.SetBool("WalkRight", true);
-        }
-      */
+         
 
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -93,21 +53,38 @@ public class PlatformerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetBool("IsJumping", true);
         }
-
-
+       
         if (!Input.GetButtonDown("Jump") && isGrounded == false)
         {
             anim.SetBool("IsJumping", false);
         }
-    
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            anim.SetBool("IsMoving", true);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            anim.SetBool("IsMoving", true);
+        }
+
+
     }
-    
+
     void FixedUpdate()
     {
         // Apply horizontal movement
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
     }
-    
+
     // Visualise ground check in editor
     void OnDrawGizmosSelected()
     {
@@ -117,4 +94,9 @@ public class PlatformerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
+
+
+
 }
+
+
