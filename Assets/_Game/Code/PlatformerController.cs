@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlatformerController : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class PlatformerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    
+
+    [SerializeField] private Animator anim; 
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private float moveInput;
@@ -23,21 +26,46 @@ public class PlatformerController : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 3f;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        anim = GetComponent<Animator>();
     }
-    
+
     void Update()
     {
         // Get horizontal input
         moveInput = Input.GetAxisRaw("Horizontal");
+
+        if (moveInput == 0 && isGrounded == true)
+        {
+            anim.SetBool("NewAnimation", true);
+        }
+
+    /*
+        if (moveInput >= -1)
+        {
+            anim.SetBool("WalkLeft", true);
+        }
+    */
+        if (moveInput <= 1)
+        {
+            anim.SetBool("WalkRight", true);
+        }
         
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        
+
         // Jump input
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            anim.SetBool("IsJumping", true);
         }
+
+
+        if (!Input.GetButtonDown("Jump") && isGrounded)
+        {
+            anim.SetBool("IsJumping", false);
+        }
+    
     }
     
     void FixedUpdate()
