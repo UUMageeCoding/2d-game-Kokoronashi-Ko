@@ -15,7 +15,8 @@ public class PlatformerController : MonoBehaviour
     [SerializeField] private Animator anim; 
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
+
     private float moveInput;
     
     void Start()
@@ -36,7 +37,7 @@ public class PlatformerController : MonoBehaviour
 
         if (moveInput == 0 && isGrounded == true)
         {
-            anim.SetBool("NewAnimation", true);
+            anim.SetBool("Idle", true);
         }
 
     /*
@@ -51,19 +52,19 @@ public class PlatformerController : MonoBehaviour
             anim.SetBool("WalkRight", true);
         }
       */
-        
+
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         // Jump input
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetBool("IsJumping", true);
         }
 
 
-        if (!Input.GetButtonDown("Jump") && isGrounded)
+        if (!Input.GetButtonDown("Jump") && isGrounded == false)
         {
             anim.SetBool("IsJumping", false);
         }
