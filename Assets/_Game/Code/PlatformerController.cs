@@ -45,10 +45,12 @@ public class PlatformerController : MonoBehaviour
             anim.SetBool("WalkLeft", true);
         }
     */
+    /*
         if (moveInput <= 1)
         {
             anim.SetBool("WalkRight", true);
         }
+      */
         
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
