@@ -17,6 +17,37 @@ public class PlatformerController : MonoBehaviour
     private Rigidbody2D rb;
     public bool isGrounded;
 
+    private bool _IsMoving = false;
+    public bool IsMoving
+    {
+        get
+        {
+            return _IsMoving;
+        }
+
+        private set
+        {
+            _IsMoving = value;
+            animator.SetBool("IsMoving", value);
+        }
+    }
+
+    private bool _IsJogging = false;
+
+    public bool IsJogging;  
+    {get
+        {
+            return _IsJogging;
+        }
+        set
+        {
+            _IsJogging = value;
+            animator.SetBool("IsJogging", value);
+        }
+    }
+
+    
+    Animator animator;
     private float moveInput;
     
     void Start()
