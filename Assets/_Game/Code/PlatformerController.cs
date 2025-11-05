@@ -65,7 +65,7 @@ public class PlatformerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            anim.SetBool("IsCrouching", true);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
