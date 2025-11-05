@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlatformerController : MonoBehaviour
@@ -59,11 +60,12 @@ public class PlatformerController : MonoBehaviour
             anim.SetBool("IsJumping", false);
         }
 
+    
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
 
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             anim.SetBool("IsCrouching", true);
         }
@@ -93,9 +95,6 @@ public class PlatformerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
-
-
-
 }
 
 
