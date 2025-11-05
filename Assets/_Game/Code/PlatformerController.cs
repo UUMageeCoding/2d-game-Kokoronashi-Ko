@@ -76,7 +76,6 @@ public class PlatformerController : MonoBehaviour
             anim.SetBool("IsMoving", true);
         }
 
-
     }
 
     void FixedUpdate()
