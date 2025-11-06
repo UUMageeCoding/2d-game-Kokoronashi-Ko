@@ -17,7 +17,12 @@ public class PlatformerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private Animator anim;
+    
+    [SerializeField] private float maxSpeed = 15f;
+    [SerializeField] private float acceleration = 2f;
+    [SerializeField] private float friction = 20f;
 
+    private float currentSpeed = 0f;
     private Rigidbody2D rb;
     public bool isGrounded;
     public bool isLookingRight;
@@ -45,7 +50,7 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsMoving", false);
         }
-         
+
 
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -110,12 +115,68 @@ public class PlatformerController : MonoBehaviour
             isLookingRight = true;
         }
 
+
+        // Movement Based Code
+        if (currentSpeed >= 5f || currentSpeed <= -5f )
+        {
+            anim.SetBool("IsJogging", true);
+        }
+        else
+        {
+            anim.SetBool("IsJogging", false);
+        }
+
+        if (currentSpeed >= 10f || currentSpeed <= -10f)
+        {
+            anim.SetBool("IsRunning", true);
+        }
+        else
+        {
+            anim.SetBool("IsRunning", false);
+        }
+        if (currentSpeed >= 15f || currentSpeed <= -15f)
+        {
+            anim.SetBool("IsMach", true);
+        }
+        else
+        {
+            anim.SetBool("IsMach", false);
+        }
+
+        if (currentSpeed == 0)
+        {
+            anim.SetBool("IsMoving", false);
+        }
+        else
+        {
+            anim.SetBool("IsMoving", true);
+        }
     }
 
     void FixedUpdate()
     {
         // Apply horizontal movement
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        float targetDirection = moveInput;
+
+
+        
+        if (Mathf.Abs(targetDirection) > 0.01f)
+        {
+            currentSpeed += targetDirection * acceleration * Time.fixedDeltaTime;
+        }
+        else
+        {
+            // Apply friction when no input
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, friction * Time.fixedDeltaTime);
+        }
+
+        // Clamp speed to max
+        currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
+
+        // Apply velocity
+         rb.linearVelocity = new Vector2(currentSpeed, rb.linearVelocityY);
     }
 
     // Visualise ground check in editor
@@ -127,6 +188,10 @@ public class PlatformerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
+    
+
+
+
 }
 
 

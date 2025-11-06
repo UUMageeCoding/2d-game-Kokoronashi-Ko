@@ -1826,9 +1826,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 1093
+        y: 1094
         width: 23
-        height: 34
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1848,9 +1848,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 27
-        y: 1093
+        y: 1094
         width: 22
-        height: 36
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3146,7 +3146,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 302
-        y: 1008
+        y: 1009
         width: 23
         height: 33
       alignment: 0
@@ -3168,9 +3168,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 327
-        y: 1008
+        y: 1009
         width: 24
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3190,9 +3190,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 353
-        y: 1008
+        y: 1009
         width: 29
-        height: 31
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3212,9 +3212,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 383
-        y: 1008
+        y: 1009
         width: 24
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3234,9 +3234,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 409
-        y: 1008
+        y: 1009
         width: 25
-        height: 33
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3256,9 +3256,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 436
-        y: 1008
+        y: 1009
         width: 23
-        height: 33
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3278,9 +3278,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 461
-        y: 1008
-        width: 23
-        height: 32
+        y: 1009
+        width: 24
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3300,9 +3300,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 486
-        y: 1008
+        y: 1009
         width: 23
-        height: 34
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3322,9 +3322,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 511
-        y: 1008
+        y: 1009
         width: 23
-        height: 34
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3366,9 +3366,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 561
-        y: 1008
+        y: 1009
         width: 29
-        height: 31
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3388,9 +3388,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 591
-        y: 1008
+        y: 1009
         width: 24
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3410,9 +3410,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 617
-        y: 1008
+        y: 1009
         width: 21
-        height: 35
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3432,9 +3432,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 1008
+        y: 1009
         width: 22
-        height: 35
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6467,10 +6467,10 @@ TextureImporter:
       name: SonicSprites2_217
       rect:
         serializedVersion: 2
-        x: 5
-        y: 706
-        width: 56
-        height: 37
+        x: 4
+        y: 704
+        width: 55
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6513,7 +6513,7 @@ TextureImporter:
         serializedVersion: 2
         x: 118
         y: 705
-        width: 56
+        width: 57
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -10956,9 +10956,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 447
-        y: 339
+        y: 341
         width: 30
-        height: 47
+        height: 45
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11464,7 +11464,7 @@ TextureImporter:
         x: 435
         y: 301
         width: 32
-        height: 34
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12254,9 +12254,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 60
-        y: 220
+        y: 217
         width: 23
-        height: 36
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12276,9 +12276,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 85
-        y: 218
-        width: 26
-        height: 39
+        y: 212
+        width: 27
+        height: 45
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12298,9 +12298,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 113
-        y: 215
-        width: 29
-        height: 42
+        y: 208
+        width: 30
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12320,9 +12320,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 145
-        y: 215
+        y: 207
         width: 29
-        height: 40
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12342,9 +12342,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 176
-        y: 215
+        y: 207
         width: 29
-        height: 43
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12364,9 +12364,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 209
-        y: 210
-        width: 25
-        height: 41
+        y: 205
+        width: 26
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12385,10 +12385,10 @@ TextureImporter:
       name: SonicSprites2_496
       rect:
         serializedVersion: 2
-        x: 237
-        y: 210
+        x: 238
+        y: 204
         width: 25
-        height: 41
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12407,10 +12407,10 @@ TextureImporter:
       name: SonicSprites2_497
       rect:
         serializedVersion: 2
-        x: 268
-        y: 210
+        x: 269
+        y: 204
         width: 25
-        height: 40
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12430,9 +12430,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 296
-        y: 210
+        y: 204
         width: 25
-        height: 40
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14124,9 +14124,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 605
-        y: 751
-        width: 51
-        height: 37
+        y: 752
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14146,9 +14146,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 659
-        y: 751
-        width: 52
-        height: 37
+        y: 752
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14167,10 +14167,10 @@ TextureImporter:
       name: SonicSprites2_216
       rect:
         serializedVersion: 2
-        x: 714
-        y: 752
-        width: 53
-        height: 36
+        x: 715
+        y: 753
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14211,10 +14211,10 @@ TextureImporter:
       name: SonicSprites2_464
       rect:
         serializedVersion: 2
-        x: 145
-        y: 261
+        x: 146
+        y: 278
         width: 22
-        height: 40
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14251,6 +14251,138 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_211
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 752
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef924778dc319945b05f77721cda118
+      internalID: 4796179594369443940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_213
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 752
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063ef2b888d70b14bb030eba8aa929c2
+      internalID: 5661126900312253651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_215
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 754
+        width: 43
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 756e40b4feeb29a4aa0a98ec791b1816
+      internalID: 1459327503889088312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_240
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 269
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639c7df1b5c27d34581bbe305139c453
+      internalID: 2552283424569254664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_486
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 261
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf24605cf44b4c844a4d2f1b9a61dfca
+      internalID: 7035310135121764801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SonicSprites2_220
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1004
+        width: 15
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8066be7115bec434c945493047545985
+      internalID: 4024218551585728036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -14265,7 +14397,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       SonicSprites2_0: 7462740690190041360
       SonicSprites2_1: -1829036046749392005
