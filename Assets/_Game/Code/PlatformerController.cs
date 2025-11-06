@@ -1,6 +1,8 @@
 using NUnit.Framework;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
 using UnityEngine.UIElements;
 
 public class PlatformerController : MonoBehaviour
@@ -18,7 +20,7 @@ public class PlatformerController : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool isGrounded;
-
+    public bool isLookingRight;
 
     Animator animator;
     private float moveInput;
@@ -54,20 +56,37 @@ public class PlatformerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetBool("IsJumping", true);
         }
-       
+
         if (!Input.GetButtonDown("Jump") && isGrounded == false)
         {
             anim.SetBool("IsJumping", false);
         }
 
-    
+
+        if (Input.GetKey(KeyCode.T))
+        {
+            anim.SetBool("TPressed", true);
+            anim.SetBool("IsSuper", true);
+        }
+        else
+        {
+            anim.SetBool("TPressed", false);
+        }
+        if (Input.GetKey(KeyCode.P))
+        {
+            anim.SetBool("IsSuper", false);
+            anim.SetBool("TPressed", false);
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             anim.SetBool("IsCrouching", true);
+        }
+        else
+        {
+            anim.SetBool("IsCrouching", false);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -76,6 +95,19 @@ public class PlatformerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             anim.SetBool("IsMoving", true);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            isLookingRight = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            isLookingRight = true;
         }
 
     }
