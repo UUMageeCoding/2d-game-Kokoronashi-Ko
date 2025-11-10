@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +14,9 @@ public class PlatformerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 12f;
-
+    [SerializeField] private float AirDashSpeed = 25f;
+    [SerializeField] private float DashingTime = 0.85f;
+    
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
@@ -18,15 +24,25 @@ public class PlatformerController : MonoBehaviour
 
     [SerializeField] private Animator anim;
     
-    [SerializeField] private float maxSpeed = 15f;
+    [SerializeField] private float maxSpeed = 35f;
     [SerializeField] private float acceleration = 2f;
     [SerializeField] private float friction = 20f;
 
-    private float currentSpeed = 0f;
+    [SerializeField] private float currentSpeed = 0f;
     private Rigidbody2D rb;
     public bool isGrounded;
     public bool isLookingRight;
-
+    private bool CanAirDash;
+    private IEnumerator AirDash()
+    {
+        CanAirDash = false;
+        anim.SetBool("AirDashing", true);
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.linearVelocity = new UnityEngine.Vector2(transform.localScale.x * 25f, 0f);
+        yield return new WaitForSeconds(DashingTime);
+        rb.gravityScale = originalGravity;
+    }
     Animator animator;
     private float moveInput;
 
@@ -58,7 +74,7 @@ public class PlatformerController : MonoBehaviour
         // Jump input
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new UnityEngine.Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetBool("IsJumping", true);
         }
 
@@ -117,7 +133,7 @@ public class PlatformerController : MonoBehaviour
 
 
         // Movement Based Code
-        if (currentSpeed >= 5f || currentSpeed <= -5f )
+        if (currentSpeed >= 5f || currentSpeed <= -5f)
         {
             anim.SetBool("IsJogging", true);
         }
@@ -134,7 +150,7 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsRunning", false);
         }
-        if (currentSpeed >= 15f || currentSpeed <= -15f)
+        if (currentSpeed >= 35f || currentSpeed <= -35f)
         {
             anim.SetBool("IsMach", true);
         }
@@ -151,16 +167,34 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsMoving", true);
         }
+
+        if (Input.GetKey(KeyCode.RightShift) && isGrounded == false && CanAirDash == true)
+        {
+            StartCoroutine(AirDash());
+            anim.SetBool("AirDashing", true);
+            anim.SetBool("CanAirDash", false);
+            CanAirDash = false;
+        }
+        if (isGrounded == true)
+        {
+            anim.SetBool("AirDashing", false);
+            anim.SetBool("CanAirDash", true);
+            CanAirDash = true;
+            anim.SetBool("IsGrounded", true);
+        }
+        else
+        {
+            anim.SetBool("IsGrounded", false);
+        }
+
     }
 
     void FixedUpdate()
     {
         // Apply horizontal movement
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new UnityEngine.Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
         float targetDirection = moveInput;
-
-
         
         if (Mathf.Abs(targetDirection) > 0.01f)
         {
@@ -176,7 +210,7 @@ public class PlatformerController : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
 
         // Apply velocity
-         rb.linearVelocity = new Vector2(currentSpeed, rb.linearVelocityY);
+         rb.linearVelocity = new UnityEngine.Vector2(currentSpeed, rb.linearVelocityY);
     }
 
     // Visualise ground check in editor
