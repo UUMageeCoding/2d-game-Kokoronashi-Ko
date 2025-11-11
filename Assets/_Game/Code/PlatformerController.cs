@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 public class PlatformerController : MonoBehaviour
 {
     [Header("Movement Settings")]
+
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float AirDashSpeed = 25f;
@@ -28,6 +29,12 @@ public class PlatformerController : MonoBehaviour
     [SerializeField] private float acceleration = 2f;
     [SerializeField] private float friction = 20f;
 
+    [SerializeField] private float skidThresholdSpeed = 5f;
+    private bool IsOppositeDirection(float input, float velocity)
+{
+    return (input > 0 && velocity < -0.1f) || (input < 0 && velocity > 0.1f);
+}
+
     [SerializeField] private float currentSpeed = 0f;
     private Rigidbody2D rb;
     public bool isGrounded;
@@ -39,7 +46,7 @@ public class PlatformerController : MonoBehaviour
         anim.SetBool("AirDashing", true);
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.linearVelocity = new UnityEngine.Vector2(transform.localScale.x * 25f, 0f);
+        rb.linearVelocity = new UnityEngine.Vector2(AirDashSpeed * 25, 0); 
         yield return new WaitForSeconds(DashingTime);
         rb.gravityScale = originalGravity;
     }
@@ -98,9 +105,16 @@ public class PlatformerController : MonoBehaviour
             anim.SetBool("IsSuper", false);
             anim.SetBool("TPressed", false);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+
+        if (Input.GetKey(KeyCode.UpArrow))
         {
+            anim.SetBool("IsLooking", true);
         }
+        else
+        {
+            anim.SetBool("IsLooking", false);
+        }
+
         if (Input.GetKey(KeyCode.DownArrow))
         {
             anim.SetBool("IsCrouching", true);
@@ -109,15 +123,16 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsCrouching", false);
         }
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             anim.SetBool("IsMoving", true);
         }
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             anim.SetBool("IsMoving", true);
         }
-
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -130,7 +145,6 @@ public class PlatformerController : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
             isLookingRight = true;
         }
-
 
         // Movement Based Code
         if (currentSpeed >= 5f || currentSpeed <= -5f)
@@ -170,7 +184,9 @@ public class PlatformerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightShift) && isGrounded == false && CanAirDash == true)
         {
-            StartCoroutine(AirDash());
+            //StartCoroutine(AirDash());
+            Debug.Log("Air dashing");
+            rb.AddForce(new UnityEngine.Vector2(25, 0), ForceMode2D.Impulse); //  linearVelocity = new UnityEngine.Vector2(AirDashSpeed * 25, 0); 
             anim.SetBool("AirDashing", true);
             anim.SetBool("CanAirDash", false);
             CanAirDash = false;
@@ -186,15 +202,15 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsGrounded", false);
         }
-
+    
     }
 
     void FixedUpdate()
     {
-        // Apply horizontal movement
-        rb.linearVelocity = new UnityEngine.Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+       
+            rb.linearVelocity = new UnityEngine.Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        float targetDirection = moveInput;
+            float targetDirection = moveInput;
         
         if (Mathf.Abs(targetDirection) > 0.01f)
         {
@@ -202,15 +218,30 @@ public class PlatformerController : MonoBehaviour
         }
         else
         {
-            // Apply friction when no input
+            
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, friction * Time.fixedDeltaTime);
         }
+            currentSpeed = Mathf.Clamp(currentSpeed, - maxSpeed, maxSpeed);
 
-        // Clamp speed to max
-        currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
+       
+            rb.linearVelocity = new UnityEngine.Vector2(currentSpeed, rb.linearVelocityY);
 
-        // Apply velocity
-         rb.linearVelocity = new UnityEngine.Vector2(currentSpeed, rb.linearVelocityY);
+        if (Mathf.Abs(moveInput) < 0.01f || IsOppositeDirection(moveInput, currentSpeed))
+        {
+            float dynamicFriction = friction;
+
+            if (IsOppositeDirection(moveInput, currentSpeed) && Mathf.Abs(currentSpeed) > skidThresholdSpeed)
+            {
+                dynamicFriction *= 3f; 
+                anim.SetBool("IsSkidding", true);
+            }
+            else
+            {
+                anim.SetBool("IsSkidding", false);
+            }
+
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, dynamicFriction * Time.fixedDeltaTime);
+        }
     }
 
     // Visualise ground check in editor
@@ -222,10 +253,6 @@ public class PlatformerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
-    
-
-
-
 }
 
 
