@@ -14,7 +14,7 @@ public class PlatformerController : MonoBehaviour
     [Header("Movement Settings")]
 
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float AirDashSpeed = 25f;
     [SerializeField] private float DashingTime = 0.85f;
     
@@ -25,8 +25,8 @@ public class PlatformerController : MonoBehaviour
 
     [SerializeField] private Animator anim;
     
-    [SerializeField] private float maxSpeed = 35f;
-    [SerializeField] private float acceleration = 8f;
+    [SerializeField] private float maxSpeed = 20f;
+    [SerializeField] private float acceleration = 3f;
     [SerializeField] private float friction = 30f;
 
     [SerializeField] private float skidThresholdSpeed = 5f;
@@ -119,7 +119,7 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsCrouching", true); anim.SetBool("IsJumping", false);
             friction = 10;
-            maxSpeed = 25;
+            maxSpeed = 5;
             acceleration = -3;
             rb.gravityScale = 100;
         }
@@ -127,7 +127,7 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsCrouching", false);
             friction = 10;
-            maxSpeed = 35;
+            maxSpeed = 20;
             acceleration = 8;
             rb.gravityScale = 3;
         }
@@ -144,7 +144,7 @@ public class PlatformerController : MonoBehaviour
         else
         {
             friction = 20;
-            maxSpeed = 35;
+            maxSpeed = 20;
             rb.gravityScale = 3;
             anim.SetBool("IsBouncing", false);
             GetComponent<SpriteRenderer>().flipY = false;
@@ -190,7 +190,7 @@ public class PlatformerController : MonoBehaviour
         {
             anim.SetBool("IsRunning", false);
         }
-        if (currentSpeed >= 35f || currentSpeed <= -35f)
+        if (currentSpeed >= 20f || currentSpeed <= -20f)
         {
             anim.SetBool("IsMach", true);
         }
